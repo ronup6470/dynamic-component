@@ -1,0 +1,81 @@
+<!-- View Container -->
+<form [formGroup]="customerFormGroup" class="floating-form">
+  <div class="row">
+    <div class="form-group col-md-6 col-12 col-lg-6">
+      <input type="text" class="form-control" floatingLabel placeholder="{{ 'NAME_PLACEHOLDER' | translate }}" autoFocus
+      formControlName="firstName" />
+      <label class="floating-form-label">{{ 'NAME_LABEL' | translate }}</label>
+      <div ngxErrors="firstName" [isFormSubmitted]="isFormSubmitted">
+        <div ngxError="required" [when]="['touched','dirty']">
+          {{ 'NAME.REQUIRED' | translate }}
+        </div>
+        <div [ngxError]="['maxlength']" [when]="['touched','dirty']">
+          {{ 'NAME.MAXLENGTH' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6 col-12 col-lg-6">
+      <input type="text" class="form-control" placeholder="{{ 'COMPANY_PLACEHOLDER' | translate }}" floatingLabel
+      formControlName="company" />
+      <label class="floating-form-label">{{ 'COMPANY_LABEL' | translate }}</label>
+      <div ngxErrors="company" [isFormSubmitted]="isFormSubmitted">
+        <div ngxError="required" [when]="['touched','dirty']">
+          {{ 'DESCRIPTION.REQUIRED' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6 col-12 col-lg-6">
+      <input type="text" class="form-control" placeholder="{{ 'GROUP_PLACEHOLDER' | translate }}" floatingLabel
+      formControlName="group" />
+      <label class="floating-form-label">{{ 'GROUP_LABEL' | translate }}</label>
+      <div ngxErrors="group" [isFormSubmitted]="isFormSubmitted">
+        <div ngxError="required" [when]="['touched','dirty']">
+          {{ 'GROUP.REQUIRED' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6 col-12 col-lg-6">
+      <input type="text" class="form-control" placeholder="{{ 'EMAIL_PLACEHOLDER' | translate }}" floatingLabel
+      formControlName="email" />
+      <label class="floating-form-label">{{ 'EMAIL_LABEL' | translate }}</label>
+      <div ngxErrors="email" [isFormSubmitted]="isFormSubmitted">
+        <div ngxError="pattern" [when]="['touched','dirty']">
+          {{ 'EMAIL.REGEX' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6 col-12 col-lg-6">
+      <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker formControlName="createdAt" floatingLabel
+      [bsConfig]="bsConfig" placeholder="{{ 'CREATEDAT_PLACEHOLDER' | translate }}" placement="bottom left">
+      <label class="floating-form-label">{{ 'CREATEDAT_LABEL' | translate }}</label>
+    </div>
+    <div class="form-group col-md-6 col-12 col-lg-6">
+      <input type="text" class="form-control" placeholder="{{ 'PRODUCTNO_PLACEHOLDER' | translate }}" floatingLabel
+      formControlName="productNo" />
+      <label class="floating-form-label">{{ 'PRODUCTNO_LABEL' | translate }}</label>
+      <div ngxErrors="productNo" [isFormSubmitted]="isFormSubmitted">
+        <div ngxError="required" [when]="['touched','dirty']">
+          {{ 'PRODUCTNO.REQUIRED' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6 col-12 col-lg-6">
+      <lib-file-upload formControlName="image"></lib-file-upload>
+      <label class="floating-form-label">{{ 'IMAGE_LABEL' | translate }}</label>
+      <div ngxErrors="image" [isFormSubmitted]="isFormSubmitted">
+        <div ngxError="required" [when]="['touched','dirty']">
+          {{ 'IMAGE.REQUIRED' | translate }}
+        </div>
+        <div ngxError="requiredFileType" [when]="['touched','dirty']">{{ 'fileTypeValidationMessage' | translate }}
+        </div>
+        <div ngxError="maxFileSize" [when]="['touched','dirty']">{{ 'maxSizeValidationMessage' | translate }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-primary m-2" (click)="saveCustomer();">{{ 'btnSave' | translate }}</button>
+    </div>
+  </div>
+</form>
+<!-- End: View Container -->
