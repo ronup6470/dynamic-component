@@ -1,1 +1,2 @@
-<app-dynamic-ui></app-dynamic-ui>
+<app-dynamic-ui [cities]="cities$ | async" [offices]="offices$ | async" (getOffices)="getOffices($event)"
+    (getCities)="getCities($event)" (add)="addCustomer($event)"></app-dynamic-ui>

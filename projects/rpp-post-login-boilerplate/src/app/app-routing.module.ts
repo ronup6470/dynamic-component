@@ -20,7 +20,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'dynamic-component',
         pathMatch: 'full'
       },
       {
@@ -38,15 +38,15 @@ const routes: Routes = [
           title: 'Notifications'
         },
       },
-      {
-        path: 'data-table',
-        loadChildren: './data-table/data-table.module#DataTableModule',
-        data: {
-          breadcrumb: 'dataTableBreadCrumb',
-          title: 'dataTableTitle'
-        }
+      // {
+      //   path: 'data-table',
+      //   loadChildren: './data-table/data-table.module#DataTableModule',
+      //   data: {
+      //     breadcrumb: 'dataTableBreadCrumb',
+      //     title: 'dataTableTitle'
+      //   }
 
-      },
+      // },
       {
         path: 'guidelines',
         loadChildren: './guidelines/guidelines.module#GuidelinesModule',
@@ -103,7 +103,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'dynamic-component',
+        path: 'data-table',
         loadChildren: './dynamic-component/dynamic-component.module#DynamicComponentModule'
       }
     ]

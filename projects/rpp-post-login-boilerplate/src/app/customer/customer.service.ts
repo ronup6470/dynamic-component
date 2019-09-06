@@ -47,7 +47,7 @@ export class CustomerService {
   /** This will get the record by id from database */
   public getCustomerById(id: string): Observable<Customer> {
     const url: string = this.baseUrl + 'Customer/' + id;
-    return this.http.httpGetRequest<Customer>(url, '1.0').pipe(map((response: Customer) => this.customerAdapter.toResponse(response)));;
+    return this.http.httpGetRequest<Customer>(url, '1.0').pipe(map((response: Customer) => this.customerAdapter.toResponse(response)));
   }
 
   /** This will save the record into database */

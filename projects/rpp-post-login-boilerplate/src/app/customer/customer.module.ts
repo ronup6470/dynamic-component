@@ -17,7 +17,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerListContainerComponent } from './customer-list-container/customer-list.container';
 import { CustomerService } from './customer.service';
-import { CustomerAdapter,CustomerFilterAdapter,} from './customer-adapter/customer.adapter';
+import { CustomerAdapter, CustomerFilterAdapter, } from './customer-adapter/customer.adapter';
 import { CustomerListDesktopPresentationComponent } from './customer-list-container/customer-list-presentation/customer-list-desktop-presentation/customer-list-desktop.presentation';
 import { CustomerListMobilePresentationComponent } from './customer-list-container/customer-list-presentation/customer-list-mobile-presentation/customer-list-mobile.presentation';
 import { CustomerFilterPresentationComponent } from './customer-list-container/customer-list-presentation/customer-filter-presentation/customer-filter.presentation';
@@ -29,18 +29,18 @@ import { CustomerFormContainerComponent } from './customer-form-container/custom
 import { CustomerFormPresentationComponent } from './customer-form-container/customer-form-presentation/customer-form.presentation';
 
 export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, './assets/i18n/customer/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/customer/', '.json');
 }
 
 @NgModule({
   declarations: [CustomerFormContainerComponent,
-CustomerFormPresentationComponent,
+    CustomerFormPresentationComponent,
 
     CustomerListContainerComponent,
     CustomerListMobilePresentationComponent,
     CustomerListDesktopPresentationComponent,
     CustomerFilterPresentationComponent,
-    CustomerSortPresentationComponent,    
+    CustomerSortPresentationComponent,
     CustomerListPresentationComponent,
   ],
   imports: [BsDatepickerModule,
@@ -65,22 +65,21 @@ CustomerFormPresentationComponent,
     CustomerAdapter, CustomerFilterAdapter,
 
   ],
-  entryComponents:[
+  entryComponents: [
     CustomerListMobilePresentationComponent,
     CustomerListDesktopPresentationComponent,
     CustomerFilterPresentationComponent,
-    CustomerSortPresentationComponent,    
+    CustomerSortPresentationComponent,
 
   ],
 })
 export class CustomerModule {
   constructor(private readonly translate: TranslateService, private languageService: LanguageDataService) {
     this.translate.use(this.languageService.defaultLanguage);
-     this.languageService.languageChange$.subscribe((lang: string) => {
-         if(lang !== null)
-         {
-             this.translate.use(lang);
-         }
+    this.languageService.languageChange$.subscribe((lang: string) => {
+      if (lang !== null) {
+        this.translate.use(lang);
+      }
     });
   }
 }
