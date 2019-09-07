@@ -14,7 +14,7 @@ export const environment = {
   // Policy server config
   policy_url: 'http://104.45.158.75:8036/api/userPolicy',
   policy_name: 'rpp-post-login-boilerplate-policy',
-  cmsUrl: 'http://172.16.3.60:8080/api/v1/post-login/graphql',
+  cmsUrl: 'http://localhost:8082/api/v1/post-login/graphql',
   apiUrl: 'http://104.45.158.75:8044/api/',
   ui_locales: 'en-US',
   siteId: '54e834bd26114c79a834bd26116c7908',

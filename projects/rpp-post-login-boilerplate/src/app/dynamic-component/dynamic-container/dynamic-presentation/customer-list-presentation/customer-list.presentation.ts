@@ -14,8 +14,10 @@ import { Customer } from '../../../dynamic.model';
 export class CustomerListPresentationComponent {
   /** This property is used to store the customers that has been retrieved from the API. */
   public set customers(value: Customer[]) {
-    this._customers = value;
-    // this.changeDetection.detectChanges();
+    if(value){
+      this._customers = value;
+      this.changeDetection.detectChanges();
+    }
   };
 
   public get customers(): Customer[] {

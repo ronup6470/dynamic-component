@@ -36,6 +36,7 @@ export class DynamicPresentationComponent implements OnInit {
   @Input() public set customers(customers: Customer[]) {
     if (customers) {
       this._customers = customers;
+      this.presenter.createPortal(this.portal);
       this.presenter.setCustomers(this.customers);
     }
   }

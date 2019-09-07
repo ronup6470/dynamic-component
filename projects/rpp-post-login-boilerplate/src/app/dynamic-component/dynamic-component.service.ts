@@ -49,7 +49,7 @@ export class DynamicComponentService {
    */
   public getCustomer(): Observable<Customer[]> {
     const url: string = this.baseUrl + '/customer';
-    return this.http.httpPostRequest<Customer[]>(url, '1.0');
+    return this.http.httpGetRequest<Customer[]>(url, '1.0');
   }
 
 

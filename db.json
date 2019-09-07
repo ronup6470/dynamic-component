@@ -128,9 +128,6 @@
   ],
   "customer": [
     {
-      "id": 1
-    },
-    {
       "firstName": "dfgsd",
       "city": {
         "id": 2,
@@ -173,9 +170,6 @@
       "id": 4
     },
     {
-      "id": 5
-    },
-    {
       "firstName": "sadgasgasdgs",
       "city": {
         "id": 3,
@@ -190,7 +184,102 @@
       "id": 6
     },
     {
-      "id": 7
+      "firstName": "sfgsfd",
+      "city": {
+        "id": 3,
+        "name": "Surat"
+      },
+      "office": {
+        "id": 3,
+        "officeName": "SuratThree"
+      },
+      "createdAt": "2019-09-25T05:27:17.000Z",
+      "productNo": "dsgsdf",
+      "id": 8
+    },
+    {
+      "firstName": "sfgsfd",
+      "city": {
+        "id": 3,
+        "name": "Surat"
+      },
+      "office": {
+        "id": 3,
+        "officeName": "SuratThree"
+      },
+      "createdAt": "2019-09-25T05:27:17.000Z",
+      "productNo": "dsgsdf",
+      "id": 9
+    },
+    {
+      "firstName": "gsfg",
+      "city": {
+        "id": 3,
+        "name": "Surat"
+      },
+      "office": {
+        "id": 3,
+        "officeName": "SuratThree"
+      },
+      "createdAt": "2019-09-24T05:31:30.000Z",
+      "productNo": "sdfgsd",
+      "id": 11
+    },
+    {
+      "firstName": "dfgh",
+      "city": {
+        "id": 4,
+        "name": "Dharampur"
+      },
+      "office": {
+        "id": 3,
+        "officeName": "DharampurThree"
+      },
+      "createdAt": "2019-09-24T05:34:42.000Z",
+      "productNo": "fgdh",
+      "id": 13
+    },
+    {
+      "firstName": "dfbg",
+      "city": {
+        "id": 3,
+        "name": "Surat"
+      },
+      "office": {
+        "id": 2,
+        "officeName": "SuratTwo"
+      },
+      "createdAt": "2019-09-25T05:35:43.000Z",
+      "productNo": "dfbfd",
+      "id": 14
+    },
+    {
+      "firstName": "sdfgfds",
+      "city": {
+        "id": 3,
+        "name": "Surat"
+      },
+      "office": {
+        "id": 3,
+        "officeName": "SuratThree"
+      },
+      "createdAt": "2019-09-23T05:37:08.000Z",
+      "productNo": "dfsgfds",
+      "id": 15
+    },
+    {
+      "firstName": "ronak",
+      "city": {
+        "id": 3,
+        "name": "Surat"
+      },
+      "office": {
+        "id": 3,
+        "officeName": "SuratThree"
+      },
+      "createdAt": "2019-09-25T07:02:15.000Z",
+      "productNo": "sdfsda",
+      "id": 16
     }
   ]
 }

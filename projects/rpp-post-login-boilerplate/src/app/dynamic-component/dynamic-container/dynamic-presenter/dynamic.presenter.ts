@@ -49,9 +49,8 @@ export class DynamicPresenter {
         if (this.componentFactoryRef) {
             this.componentFactoryRef.destroy();
         }
-        this.componentFactoryRef = container.createComponent<CustomerFormPresentationComponent>(
-            this.factoryResolver.resolveComponentFactory<CustomerFormPresentationComponent>(CustomerFormPresentationComponent)
-        );
+        const component = this.factoryResolver.resolveComponentFactory<CustomerFormPresentationComponent>(CustomerFormPresentationComponent);
+        this.componentFactoryRef = container.createComponent<CustomerFormPresentationComponent>(component);
         this.componentFactoryRef.instance.cities = cities;
         this.componentFactoryRef.instance.selectedCity$.subscribe((name: string) => {
             this.selectedCity.next(name);
@@ -59,6 +58,7 @@ export class DynamicPresenter {
         this.componentFactoryRef.instance.add$.subscribe((customer: Customer) => {
             this.addCustomer.next(customer);
         })
+        // component.
     }
 
     /**
@@ -76,11 +76,10 @@ export class DynamicPresenter {
         if (this.componentPortalRef) {
             this.componentPortalRef.destroy();
         }
-        this.componentPortalRef = portal.attachComponentPortal(
-            new ComponentPortal(CustomerListPresentationComponent)
-        );
+        const componentPortal = new ComponentPortal(CustomerListPresentationComponent)
+        this.componentPortalRef = portal.attachComponentPortal(componentPortal);
         this.componentPortalRef.instance.customers = this.customers;
-
+        // componentPortal.
     }
     /**
      * Sets customer
@@ -96,8 +95,8 @@ export class DynamicPresenter {
     public createOverlay(): void {
         const overlayConfiguration: OverlayConfig = new OverlayConfig({
             hasBackdrop: true,
-            backdropClass: '',
-            positionStrategy: new GlobalPositionStrategy().centerVertically().centerHorizontally()
+            // backdropClass: '',
+            positionStrategy: new GlobalPositionStrategy().bottom()
         });
         this.overlayRef = this.overlay.create(overlayConfiguration);
         this.componentOverlayRef = this.overlayRef.attach(
@@ -106,12 +105,6 @@ export class DynamicPresenter {
         this.overlayRef.backdropClick().subscribe(() => {
             this.overlayRef.detach();
         });
-        let user: UserInfo = new UserInfo();
-        user.name = 'ronak';
-        user.city = 'valsad';
-        user.address = 'jujwa';
-        user.number = 1;
-        this.componentOverlayRef.instance.userInfo = user;
-        this.componentOverlayRef
+        // this.componentOverlayRef.injector.
     }
 }

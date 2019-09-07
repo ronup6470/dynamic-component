@@ -25,7 +25,7 @@ export class DynamicContainerComponent {
     private service: DynamicComponentService,
     private toaster: ToastrService
   ) {
-    // this.customers$ = this.service.getCustomer();
+    this.customers$ = this.service.getCustomer();
   }
   /**
    * Gets city list
@@ -55,7 +55,7 @@ export class DynamicContainerComponent {
     this.service.addCustomer(customer).subscribe(response => {
 
       this.toaster.success("Data saved successfully.");
-      this.customers$ = this.service.getCustomer();
+      this.getCustomer();
     }, (err) => {
     });
   }
