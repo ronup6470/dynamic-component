@@ -46,9 +46,5 @@ testem.log
 Thumbs.db
 
 #Ignore package lock json file
-package-lock.json
+# package-lock.json
 /project/rpp-post-login-boilerplate/yo-rc.json
-<<<<<<< HEAD
-=======
-
->>>>>>> 73e2008c7a0a430449eda048f6429211971a77b6

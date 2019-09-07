@@ -25,7 +25,7 @@ export class DynamicContainerComponent {
     private service: DynamicComponentService,
     private toaster: ToastrService
   ) {
-    this.customers$ = this.service.getCustomer();
+    // this.customers$ = this.service.getCustomer();
   }
   /**
    * Gets city list
