@@ -1,0 +1,49 @@
+<div class="table-responsive">
+    <table class="table data-tbl w-100">
+        <thead>
+            <tr>
+
+                <th>
+                    <span>FirstName</span>
+                </th>
+                <th [column]="'company'" scope="col" class="column-sort">
+                    <span>city</span>
+                </th>
+                <th [column]="'group'" scope="col" class="column-sort">
+                    <span>office</span>
+                </th>
+                <th [column]="'createdAt'" scope="col" class="column-sort">
+                    <span>{{ 'CREATEDAT_LABEL' | translate }}</span>
+                </th>
+                <th>
+                    <span>productNo</span>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers;trackBy: trackBy;let i= index">
+
+                <td class="align-left">{{customer.firstName}}</td>
+                <td class="align-right">{{customer.city.name}}</td>
+                <td class="align-center">{{customer.office.officeName}}</td>
+                <td>{{customer.createdAt}}</td>
+                <td>{{customer.productNo}}</td>
+
+            </tr>
+
+            <!-- colspan base on total column -->
+            <tr *ngIf="!customers || customers.length === 0">
+                <td align="center" colspan="10" class="text-muted">{{'tblMessage' | translate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #modalTemplate>
+    <div class="modal-body text-center">
+        <p>Do you want to delete record?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+    </div>
+</ng-template>

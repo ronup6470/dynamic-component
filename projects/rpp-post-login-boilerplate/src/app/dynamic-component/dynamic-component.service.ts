@@ -43,6 +43,17 @@ export class DynamicComponentService {
     return this.http.httpPostRequest<Customer>(url, customer, '1.0');
   }
 
+  /**
+   * Gets customer
+   * @returns customer 
+   */
+  public getCustomer(): Observable<Customer[]> {
+    const url: string = this.baseUrl + '/customer';
+    return this.http.httpPostRequest<Customer[]>(url, '1.0');
+  }
+
+
+
 
   /**
    * This function checks for the presence or criteria and constructs the query params object accordingly.

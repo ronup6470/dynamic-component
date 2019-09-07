@@ -17,10 +17,16 @@ export class DynamicContainerComponent {
    * Office $ of dynamic container component
    */
   public offices$: Observable<Office[]>;
+  /**
+   * Get customer$ of dynamic container component
+   */
+  public customers$: Observable<Customer[]>;
   constructor(
     private service: DynamicComponentService,
     private toaster: ToastrService
-  ) { }
+  ) {
+    this.customers$ = this.service.getCustomer();
+  }
   /**
    * Gets city list
    * @param name 
@@ -36,6 +42,12 @@ export class DynamicContainerComponent {
     this.offices$ = this.service.getOfficeList(name);
   }
   /**
+   * Gets customer
+   */
+  public getCustomer(): void {
+    this.customers$ = this.service.getCustomer();
+  }
+  /**
    * Adds customer
    * @param customer 
    */
@@ -43,7 +55,7 @@ export class DynamicContainerComponent {
     this.service.addCustomer(customer).subscribe(response => {
 
       this.toaster.success("Data saved successfully.");
-
+      this.customers$ = this.service.getCustomer();
     }, (err) => {
     });
   }

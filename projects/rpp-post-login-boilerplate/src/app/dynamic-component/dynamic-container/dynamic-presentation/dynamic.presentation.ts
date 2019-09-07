@@ -33,6 +33,15 @@ export class DynamicPresentationComponent implements OnInit {
   public get offices(): Office[] {
     return this._offices;
   }
+  @Input() public set customers(customers: Customer[]) {
+    if (customers) {
+      this._customers = customers;
+      this.presenter.setCustomers(this.customers);
+    }
+  }
+  public get customers(): Customer[] {
+    return this._customers;
+  }
   /*** Output of dynamic presentation component */
   @Output() public getCities: EventEmitter<string>;
 
@@ -53,6 +62,7 @@ export class DynamicPresentationComponent implements OnInit {
 
   /*** Offices  of dynamic presentation component */
   private _offices: Office[];
+  private _customers: Customer[];
 
   constructor(
     private presenter: DynamicPresenter,

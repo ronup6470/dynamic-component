@@ -5,6 +5,7 @@ import { UserInfoPresentationComponent } from '../dynamic-presentation/user-info
 import { CdkPortalOutlet, ComponentPortal } from '@angular/cdk/portal';
 import { UserInfo, City, Office, Customer } from '../../dynamic.model';
 import { CustomerFormPresentationComponent } from '../dynamic-presentation/customer-form-presentation/customer-form.presentation';
+import { CustomerListPresentationComponent } from '../dynamic-presentation/customer-list-presentation/customer-list.presentation';
 
 /**
  * Injectable
@@ -16,14 +17,22 @@ export class DynamicPresenter {
     /**
      * Component ref of dynamic presenter
      */
-    // private componentRef: ComponentRef<CustomerFormPresentationComponent>;
-    private componentRef: ComponentRef<any>;
+    private componentFactoryRef: ComponentRef<CustomerFormPresentationComponent>;
+    /**
+     * Component portal ref of dynamic presenter
+     */
+    private componentPortalRef: ComponentRef<CustomerListPresentationComponent>;
+    /**
+     * Component overlay ref of dynamic presenter
+     */
+    private componentOverlayRef: ComponentRef<any>;
     /**
      * Overlay ref of dynamic presenter
      */
     private overlayRef: OverlayRef;
     private selectedCity: Subject<string>;
     private addCustomer: Subject<Customer>;
+    public customers: Customer[];
     constructor(
         private factoryResolver: ComponentFactoryResolver,
         private overlay: Overlay
@@ -37,17 +46,17 @@ export class DynamicPresenter {
      * Creates factory resolver
      */
     public createFactoryResolver(container: ViewContainerRef, cities: City[]): void {
-        if (this.componentRef) {
-            this.componentRef.destroy();
+        if (this.componentFactoryRef) {
+            this.componentFactoryRef.destroy();
         }
-        this.componentRef = container.createComponent<CustomerFormPresentationComponent>(
+        this.componentFactoryRef = container.createComponent<CustomerFormPresentationComponent>(
             this.factoryResolver.resolveComponentFactory<CustomerFormPresentationComponent>(CustomerFormPresentationComponent)
         );
-        this.componentRef.instance.cities = cities;
-        this.componentRef.instance.selectedCity$.subscribe((name: string) => {
+        this.componentFactoryRef.instance.cities = cities;
+        this.componentFactoryRef.instance.selectedCity$.subscribe((name: string) => {
             this.selectedCity.next(name);
         });
-        this.componentRef.instance.add$.subscribe((customer: Customer) => {
+        this.componentFactoryRef.instance.add$.subscribe((customer: Customer) => {
             this.addCustomer.next(customer);
         })
     }
@@ -57,32 +66,29 @@ export class DynamicPresenter {
      * @param offices 
      */
     public setOffices(offices: Office[]): void {
-        this.componentRef.instance.offices = offices;
+        this.componentFactoryRef.instance.offices = offices;
     }
+
     /**
      * Creates portal
      */
     public createPortal(portal: CdkPortalOutlet): void {
-        if (this.componentRef) {
-            this.componentRef.destroy();
+        if (this.componentPortalRef) {
+            this.componentPortalRef.destroy();
         }
-        this.componentRef = portal.attachComponentPortal(
-            new ComponentPortal(UserInfoPresentationComponent)
+        this.componentPortalRef = portal.attachComponentPortal(
+            new ComponentPortal(CustomerListPresentationComponent)
         );
-        let user: UserInfo = new UserInfo();
-        user.name = 'ronak';
-        user.city = 'valsad';
-        user.address = 'jujwa';
-        user.number = 1;
-        this.componentRef.instance.userInfo = user;
-        setTimeout(() => {
-            let user1: UserInfo = new UserInfo();
-            user1.name = 'ronak323';
-            user1.city = 'valsad2332';
-            user1.address = 'jujwa232';
-            user1.number = 1222;
-            this.componentRef.instance.userInfo = user1;
-        }, 1000);
+        this.componentPortalRef.instance.customers = this.customers;
+
+    }
+    /**
+     * Sets customer
+     * @param customer 
+     */
+    public setCustomers(customer: Customer[]): void {
+        this.componentPortalRef.instance.customers = customer;
+        this.customers = customer;
     }
     /**
      * Creates overlay
@@ -94,7 +100,7 @@ export class DynamicPresenter {
             positionStrategy: new GlobalPositionStrategy().centerVertically().centerHorizontally()
         });
         this.overlayRef = this.overlay.create(overlayConfiguration);
-        this.componentRef = this.overlayRef.attach(
+        this.componentOverlayRef = this.overlayRef.attach(
             new ComponentPortal(UserInfoPresentationComponent)
         );
         this.overlayRef.backdropClick().subscribe(() => {
@@ -105,7 +111,7 @@ export class DynamicPresenter {
         user.city = 'valsad';
         user.address = 'jujwa';
         user.number = 1;
-        this.componentRef.instance.userInfo = user;
-        this.componentRef
+        this.componentOverlayRef.instance.userInfo = user;
+        this.componentOverlayRef
     }
 }

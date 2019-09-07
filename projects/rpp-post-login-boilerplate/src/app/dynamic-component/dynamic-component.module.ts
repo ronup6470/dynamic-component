@@ -1,3 +1,4 @@
+import { CustomerListPresentationComponent } from './dynamic-container/dynamic-presentation/customer-list-presentation/customer-list.presentation';
 import { CustomerFormPresentationComponent } from './dynamic-container/dynamic-presentation/customer-form-presentation/customer-form.presentation';
 import { DynamicComponentService } from './dynamic-component.service';
 import { DynamicPresentationComponent } from './dynamic-container/dynamic-presentation/dynamic.presentation';
@@ -28,7 +29,8 @@ export function createTranslateLoader(http: HttpClient) {
     DynamicContainerComponent,
     DynamicPresentationComponent,
     UserInfoPresentationComponent,
-    CustomerFormPresentationComponent
+    CustomerFormPresentationComponent,
+    CustomerListPresentationComponent
   ],
   imports: [
     BsDatepickerModule,
@@ -55,7 +57,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   entryComponents: [
     UserInfoPresentationComponent,
-    CustomerFormPresentationComponent
+    CustomerFormPresentationComponent,
+    CustomerListPresentationComponent
   ]
 })
 export class DynamicComponentModule {
